@@ -37,3 +37,21 @@ View(itemDetails)
 #Performing an Inner Join merge
 merged <- merge(itemData, itemDetails, by = "itemCode")
 merged
+
+
+#SHORTCUT
+itemdata<-data.frame(
+itemCode = c(1001:1005),
+itemCategory = c("Electronics","Desktop Supplies","Office Supplies", "USB", "CD Drive"),
+itemPrice = c("700","300","350","400","800") 
+)
+subset(itemdata,itemPrice>=350,
+    select=c(itemCode,itemCategory,itemPrice))
+subset(itemdata,itemCategory == "Office Supplies" | itemCategory == "Desktop Supplies",
+    select=c(itemCode,itemCategory,itemPrice))
+itemdetails<-data.frame(
+itemCode = c(1001:1005),
+itemQtyonHand= c("15","10","20", "12", "5"),
+itemReorderLvl = c("2","2","4","5","1") 
+)
+merge(itemdata,itemdetails,by="itemCode")
